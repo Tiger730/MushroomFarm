@@ -1,0 +1,7 @@
+{
+  "name": "MushroomFarm",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

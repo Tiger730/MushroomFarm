@@ -1,0 +1,47 @@
+<ion-card >
+    <ion-item  class="ion-activated">
+      <ion-icon name="home-outline" slot="start" ></ion-icon>
+      <ion-label (click)="gotomushroomhouse()">โรงเรือน 1</ion-label>
+    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div>
+            <ion-item href="#" class="ion-activated">
+              <ion-icon name="thermometer-outline"></ion-icon>
+              <ion-label>อุณหภูมิ {{this.data.temp}}</ion-label>
+            </ion-item>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <ion-item href="#">
+              <ion-icon name="water-outline"></ion-icon>
+              <ion-label>ความชื้น {{this.data.humid}}</ion-label>
+            </ion-item>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div>
+            <ion-item href="#" class="ion-activated">
+              <ion-icon name="nuclear"></ion-icon>
+              <ion-label>พัดลม</ion-label>
+            </ion-item>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <ion-item href="#">
+              <ion-icon name="color-wand"></ion-icon>
+              <ion-label>พ่นหมอก</ion-label>
+            </ion-item>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
