@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'mushroom-house',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {

@@ -30,7 +30,7 @@ export class MushroomHousePage implements OnInit {
     this.timer = setInterval(() => {
       this.fetchData(); 
       
-    }, 3000);
+    }, 1000);
     console.log(this.data)
 
   }

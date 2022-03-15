@@ -9,24 +9,31 @@
 
 <ion-content [fullscreen]="true">
   <ion-card>
-    <ion-item>
-      <ion-label>คุมด้วยตัวเอง</ion-label>
-      <ion-toggle [(ngModel)]="var1" (ionChange)="change($event)"></ion-toggle>
-      <ion-label>อัตโนมัติ</ion-label>
-    </ion-item>
-    <ion-item class="ion-activated">
-      <ion-icon name="home-outline" slot="start"></ion-icon>
-      <ion-label>โรงเรือน {{data.farm_id}}</ion-label>
-    </ion-item>
+    <ion-grid>
+      <ion-col>
+        <ion-item>
+          <ion-icon name="home-outline" slot="start"></ion-icon>
+          <ion-label>โรงเรือน {{data.farm_id}}</ion-label>
+          <ion-item>
+            <!-- <ion-label>คุมด้วยตัวเอง</ion-label> -->
+            <ion-toggle [(ngModel)]="var1" (ionChange)="change($event)"></ion-toggle>
+            <!-- <ion-label>อัตโนมัติ</ion-label> -->
+          </ion-item>
+        </ion-item>
+
+      </ion-col>
+    </ion-grid>
 
     <ion-grid>
       <ion-col>
         <div>
-          <ion-item class="ion-activated">
+          <ion-item disabled="{{!var1}}">
             <ion-icon name="thermometer-outline"></ion-icon>
-            <ion-label>อุณหภูมิ  {{data.temp}}</ion-label>
-            <ion-item disabled="{{!var1}}">
-              <IonLabel>{{data.fix_temp}}</IonLabel>
+            <ion-label>อุณหภูมิ {{data.temp}}</ion-label>
+            <ion-item>
+              <ion-item>
+                <IonLabel>{{data.fix_temp}}</IonLabel>
+              </ion-item>
               <ion-icon (click)="minustemp()" name="remove-circle"></ion-icon>
               <ion-icon (click)="plustemp()" name="add-circle"></ion-icon>
             </ion-item>
@@ -38,10 +45,10 @@
     <ion-grid>
       <ion-col>
         <div>
-          <ion-item class="ion-activated">
+          <ion-item disabled="{{var1}}">
             <ion-icon name="nuclear"></ion-icon>
             <ion-label>พัดลม {{data.fan_status === 0?'off':'on'}}</ion-label>
-            <ion-toggle [(ngModel)]="var2" (ionChange)="fan($event)" disabled="{{var1}}"></ion-toggle>
+            <ion-toggle [(ngModel)]="var2" (ionChange)="fan($event)"></ion-toggle>
           </ion-item>
         </div>
       </ion-col>
@@ -50,11 +57,13 @@
     <ion-grid>
       <ion-col>
         <div>
-          <ion-item >
+          <ion-item disabled="{{!var1}}">
             <ion-icon name="water-outline"></ion-icon>
-            <ion-label>ความชื้น  {{data.humid}}</ion-label>
-            <ion-item disabled="{{!var1}}">
-              <IonLabel>{{data.fix_humid}}</IonLabel>
+            <ion-label>ความชื้น {{data.humid}}</ion-label>
+            <ion-item>
+              <ion-item>
+                <IonLabel>{{data.fix_humid}}</IonLabel>
+              </ion-item>
               <ion-icon (click)="minushumid()" name="remove-circle"></ion-icon>
               <ion-icon (click)="plushumid()" name="add-circle"></ion-icon>
             </ion-item>
@@ -65,14 +74,14 @@
     <ion-grid>
       <ion-col>
         <div>
-          <ion-item>
+          <ion-item disabled="{{var1}}">
             <ion-icon name="color-wand"></ion-icon>
             <ion-label>พ่นหมอก {{data.fog_status === 0?'off':'on'}}</ion-label>
-            <ion-toggle [(ngModel)]="var3" (ionChange)="fog($event)" disabled="{{var1}}"></ion-toggle>
+            <ion-toggle [(ngModel)]="var3" (ionChange)="fog($event)"></ion-toggle>
           </ion-item>
         </div>
       </ion-col>
-      <ion-button color="medium" expand="block">ยืนยัน</ion-button>
+      <!-- <ion-button color="medium" expand="block">ยืนยัน</ion-button> -->
     </ion-grid>
   </ion-card>
 

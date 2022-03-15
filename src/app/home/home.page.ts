@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-// import { NavController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 
 
 @Component({
@@ -12,12 +12,11 @@ import { Router } from '@angular/router';
 export class HomePage {
   data : any = []
   timer : any
-  constructor(private router: Router, private http:HttpClient,) {
+  constructor(private router: Router, private http:HttpClient,private navCtrl: NavController) {
     
    }
    go(farm_id) {
-    //  this.router.navigate(['mushroom-house']);
-    // this.navCtrl.navigateForward("/mushroom-house/"+farm_id)
+    this.navCtrl.navigateForward("/mushroom-house/"+farm_id)
     console.log(farm_id)
    }
   ngOnInit() {
