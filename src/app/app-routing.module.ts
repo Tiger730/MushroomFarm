@@ -8,16 +8,24 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'mushroom-house',
     pathMatch: 'full'
   },
   {
-    path: 'mushroom-house',
+    path: 'mushroom-house/:farm_id',
     loadChildren: () => import('./mushroom-house/mushroom-house.module').then( m => m.MushroomHousePageModule)
   },
   {
     path: 'statistics',
     loadChildren: () => import('./statistics/statistics.module').then( m => m.StatisticsPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
 ];
 

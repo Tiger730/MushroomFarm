@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-//import { AnyTxtRecord } from 'dns';
+// import { NavController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-home',
@@ -9,16 +10,24 @@ import { Router } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  data : any
+  data : any = []
   timer : any
-  constructor(private router: Router, private http:HttpClient) {
+  constructor(private router: Router, private http:HttpClient,) {
     
+   }
+   go(farm_id) {
+    //  this.router.navigate(['mushroom-house']);
+    // this.navCtrl.navigateForward("/mushroom-house/"+farm_id)
+    console.log(farm_id)
    }
   ngOnInit() {
     this.fetchData();
     this.timer = setInterval(() => {
       this.fetchData(); 
-    }, 8000);
+      
+    }, 3000);
+    console.log(this.data)
+
   }
   
 ngOnDestroy() {
@@ -27,20 +36,15 @@ ngOnDestroy() {
   }
 }
 
-gotomushroomhouse(){
-  this.router.navigate(['/mushroom-house']);
-};
-
-  
-  apiesp: string = 'http://139.59.249.192//read/farm1/esp8266';
+  apiesp: string = 'http://139.59.249.192/read/1';
   fetchData(){ 
       this.http.get(this.apiesp).subscribe(
       res => {
-        console.log(res);
+        console.log("abc", res);
         this.data = res
       },
       err => {
-        console.log(err);
+        console.log("res  ==>", err);
       }
     );
   }

@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color='primary'>
+  <ion-toolbar color="success">
     <ion-title>
       โรงเรือน
     </ion-title>
@@ -8,74 +8,27 @@
 
 <ion-content [fullscreen]="true">
 
-  <ion-card >
-    <ion-item  class="ion-activated">
-      <ion-icon name="home-outline" slot="start" ></ion-icon>
-      <ion-label (click)="gotomushroomhouse()">โรงเรือน 1</ion-label>
-    </ion-item>
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <div>
-            <ion-item href="#" class="ion-activated">
-              <ion-icon name="thermometer-outline"></ion-icon>
-              <ion-label>อุณหภูมิ {{this.data.temp}}</ion-label>
-            </ion-item>
-          </div>
-        </ion-col>
-        <ion-col>
-          <div>
-            <ion-item href="#">
-              <ion-icon name="water-outline"></ion-icon>
-              <ion-label>ความชื้น {{this.data.humid}}</ion-label>
-            </ion-item>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <div>
-            <ion-item href="#" class="ion-activated">
-              <ion-icon name="nuclear"></ion-icon>
-              <ion-label>พัดลม</ion-label>
-            </ion-item>
-          </div>
-        </ion-col>
-        <ion-col>
-          <div>
-            <ion-item href="#">
-              <ion-icon name="color-wand"></ion-icon>
-              <ion-label>พ่นหมอก</ion-label>
-            </ion-item>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-card>
-
-  <ion-card >
+  <ion-card *ngFor="let item of data ; index as i" >
+    <!-- *ngFor="let item of data ; index as i" -->
     <ion-item class="ion-activated">
       <ion-icon name="home-outline" slot="start"></ion-icon>
-      <ion-label>โรงเรือน 2</ion-label>
+      <ion-label>โรงเรือน {{i+1}}</ion-label>
     </ion-item>
     <ion-grid>
       <ion-row>
         <ion-col>
           <div>
-            <ion-item href="#" class="ion-activated">
+            <ion-item class="ion-activated">
               <ion-icon name="thermometer-outline"></ion-icon>
-              <ion-label>อุณหภูมิ</ion-label>
+              <ion-label>อุณหภูมิ {{item.temp}}</ion-label>
             </ion-item>
           </div>
         </ion-col>
         <ion-col>
           <div>
-            <ion-item href="#">
+            <ion-item>
               <ion-icon name="water-outline"></ion-icon>
-              <ion-label>ความชื้น</ion-label>
+              <ion-label>ความชื้น {{item.humid}}</ion-label>
             </ion-item>
           </div>
         </ion-col>
@@ -86,70 +39,24 @@
       <ion-row>
         <ion-col>
           <div>
-            <ion-item href="#" class="ion-activated">
+            <ion-item class="ion-activated">
               <ion-icon name="nuclear"></ion-icon>
-              <ion-label>พัดลม</ion-label>
+              <ion-label>พัดลม {{item.fan_status === 0?'off':'on'}}</ion-label>
             </ion-item>
           </div>
         </ion-col>
         <ion-col>
           <div>
-            <ion-item href="#">
+            <ion-item>
               <ion-icon name="color-wand"></ion-icon>
-              <ion-label>พ่นหมอก</ion-label>
+              <ion-label>พ่นหมอก {{item.fog_status === 0?'off':'on'}} </ion-label>
             </ion-item>
           </div>
         </ion-col>
       </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-button color="medium" expand="block" (click)="go(item.farm_id)">แก้ไข</ion-button>
     </ion-grid>
   </ion-card>
-
-  <ion-card>
-    <ion-item href="#" class="ion-activated">
-      <ion-icon name="home-outline" slot="start"></ion-icon>
-      <ion-label>โรงเรือน 3</ion-label>
-    </ion-item>
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <div>
-            <ion-item href="#" class="ion-activated">
-              <ion-icon name="thermometer-outline"></ion-icon>
-              <ion-label>อุณหภูมิ</ion-label>
-            </ion-item>
-          </div>
-        </ion-col>
-        <ion-col>
-          <div>
-            <ion-item href="#">
-              <ion-icon name="water-outline"></ion-icon>
-              <ion-label>ความชื้น</ion-label>
-            </ion-item>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <div>
-            <ion-item href="#" class="ion-activated">
-              <ion-icon name="nuclear"></ion-icon>
-              <ion-label>พัดลม</ion-label>
-            </ion-item>
-          </div>
-        </ion-col>
-        <ion-col>
-          <div>
-            <ion-item href="#">
-              <ion-icon name="color-wand"></ion-icon>
-              <ion-label>พ่นหมอก</ion-label>
-            </ion-item>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-card>
-
 </ion-content>
