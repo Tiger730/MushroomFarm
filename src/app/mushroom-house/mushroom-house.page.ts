@@ -45,7 +45,7 @@ ngOnDestroy() {
   fetchData(){ 
       this.http.get(`http://139.59.249.192/read/farm/${this.farmid}`).subscribe(
       res => {
-        console.log("abc", res[0].Automate);
+        console.log("abc", res[0] );
         if (res[0].Automate == 1){
           this.var1=true
         }
