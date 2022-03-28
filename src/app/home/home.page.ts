@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { NavController, LoadingController } from '@ionic/angular';
+import { Storage } from '@ionic/storage-angular';
 
 
 @Component({
@@ -9,39 +10,56 @@ import { NavController } from '@ionic/angular';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
+
 export class HomePage {
-  data : any = []
-  timer : any
-  constructor(private router: Router, private http:HttpClient,private navCtrl: NavController) {
-    
-   }
-   go(farm_id) {
-    this.navCtrl.navigateForward("/mushroom-house/"+farm_id)
+  data: any = []
+  timer: any
+  userID: any
+  constructor(private router: Router, private http: HttpClient, private navCtrl: NavController, private storage: Storage, public loadingController: LoadingController) {
+
+  }
+  go(farm_id) {
+    this.navCtrl.navigateForward("/mushroom-house/" + farm_id)
     console.log(farm_id)
-   }
-  ngOnInit() {
+  }
+  gostatistics(farm_id) {
+    this.router.navigate(['statistics']);
+  }
+
+
+  async ngOnInit() {
+    await this.storage.create();
+    await this.getUserData()
+
     this.fetchData();
     this.timer = setInterval(() => {
-      this.fetchData(); 
-      
+      this.fetchData();
+
     }, 3000);
+
     console.log(this.data)
-
   }
-  
-ngOnDestroy() {
-  if (this.timer) {
-    clearInterval(this.timer);
-  }
-}
 
-  apiesp: string = 'http://139.59.249.192/read/1';
-  fetchData(){ 
-      this.http.get(this.apiesp).subscribe(
-      res => {
-        console.log("abc", res);
-        this.data = res
-      },
+
+  ngOnDestroy() {
+    if (this.timer) {
+      clearInterval(this.timer);
+    }
+  }
+
+
+  async getUserData() {
+    const data = await this.storage.get('userData');
+    const pareData = JSON.parse(data)
+    this.userID = pareData.user_id
+  }
+
+
+  fetchData() {
+    this.http.get(`http://139.59.249.192/read/${this.userID}`).subscribe(async res => {
+      console.log("abc", res);
+      this.data = res
+    },
       err => {
         console.log("res  ==>", err);
       }

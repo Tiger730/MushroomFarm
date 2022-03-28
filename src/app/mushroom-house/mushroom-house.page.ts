@@ -43,7 +43,7 @@ ngOnDestroy() {
 
   
   fetchData(){ 
-      this.http.get(`http://139.59.249.192/read/1/${this.farmid}`).subscribe(
+      this.http.get(`http://139.59.249.192/read/farm/${this.farmid}`).subscribe(
       res => {
         console.log("abc", res[0].Automate);
         if (res[0].Automate == 1){
@@ -72,7 +72,7 @@ ngOnDestroy() {
     );
   }
   sendData(Automate,fix_temp,fix_humid,fan_status,fog_status){
-    this.http.get(`http://139.59.249.192/change-option/1/${this.farmid}/${Automate}/${fix_temp}/${fix_humid}/${fan_status}/${fog_status}`).subscribe(
+    this.http.get(`http://139.59.249.192/change-option/${this.farmid}/${Automate}/${fix_temp}/${fix_humid}/${fan_status}/${fog_status}`).subscribe(
       res => {
         console.log('res',res);
       },
@@ -127,5 +127,8 @@ fog(even){
   else {
     this.sendData(this.data.Automate,this.data.fix_temp,this.data.fix_humid,this.data.fan_status,0)
   }
+}
+gostatistics(){
+  this.router.navigate(['statistics']);
 }
 }
