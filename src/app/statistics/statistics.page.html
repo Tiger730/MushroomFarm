@@ -1,48 +1,35 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="success">
     <ion-title>
-      <ion-icon style="zoom:1.8;" (click)="backmushroom()" name="arrow-back-outline"></ion-icon>
+      <ion-icon style="zoom:1.8;" (click)="backhome()" name="arrow-back-outline"></ion-icon>
     </ion-title>
-    <!-- <ion-title>
-      statistics
-    </ion-title> -->
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content>
   <ion-card>
     <ion-item>
-      <ion-label>
-        statistics
-      </ion-label>
+      <ion-icon style="zoom:1.5;" name="home-outline" slot="start"></ion-icon>
+      <ion-label>{{data.farm_name}}</ion-label>
     </ion-item>
-    <ion-item>
-      <ion-icon name="home-outline" slot="start"></ion-icon>
-      <ion-label>โรงเรือน {{i+1}}</ion-label>
-    </ion-item>
+
 
     <ion-grid style="display: flex; justify-content: center; align-items:  center;">
-      <ion-button id="open-modal">Open Datetime Modal</ion-button>
-      <ion-modal trigger="open-modal">
-        <ng-template>
-          <ion-content>
-            <ion-datetime></ion-datetime>
-          </ion-content>
-        </ng-template>
-      </ion-modal>
+
+      <!-- <ion-button (click)="openCalendar()">aaa</ion-button> -->
+      <ion-icon (click)="openCalendar()" style="zoom:2.8;" name="arrow-back-outline" id="open-modal"
+        name="calendar-outline"></ion-icon>
+
     </ion-grid>
 
-  </ion-card>
-
-
-
-  <ion-card class="welcome-card">
     <ion-card-header>
-      Bar Chart
+      สถิติ
     </ion-card-header>
-    <ion-card-content>
-      <canvas #barCanvas style="position: relative; height:20vh; width:40vw"></canvas>
+    <ion-card-content >
+      <canvas #lineCanvas style=" height: 360px;"></canvas>
+
     </ion-card-content>
+   
   </ion-card>
 
 </ion-content>

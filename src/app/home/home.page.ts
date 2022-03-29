@@ -23,7 +23,8 @@ export class HomePage {
     console.log(farm_id)
   }
   gostatistics(farm_id) {
-    this.router.navigate(['statistics']);
+    this.navCtrl.navigateForward("/statistics/" + farm_id)
+    console.log(farm_id)
   }
 
 
@@ -35,7 +36,7 @@ export class HomePage {
     this.timer = setInterval(() => {
       this.fetchData();
 
-    }, 3000);
+    }, 5000);
 
     console.log(this.data)
   }

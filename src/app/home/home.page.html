@@ -6,7 +6,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content >
 
   <ion-card  *ngFor="let item of data ; index as i">
     <!-- *ngFor="let item of data ; index as i" -->
@@ -61,7 +61,7 @@
     </ion-grid>
 
     <ion-grid style="display: flex; justify-content: center; align-items:  center;">
-      <ion-icon (click)="gostatistics()" style="zoom:3.5;" name="document-text-outline"></ion-icon>
+      <ion-icon (click)="gostatistics(item.farm_id)" style="zoom:3.5;" name="document-text-outline"></ion-icon>
   </ion-grid>
   <ion-grid style="display: flex; justify-content: center; align-items:  center;">
     <ion-label>
