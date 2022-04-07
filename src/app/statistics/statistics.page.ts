@@ -28,10 +28,15 @@ export class StatisticsPage implements OnInit {
   timer: any
   selectdate: string;
   type: 'string';
-  statisticdata: any = []
+  // statisticdata: any = []
   temp: any = []
   humids: any = []
   time:any = []
+  mintemp:any=[]
+  maxtemp:any=[]
+  minhumid:any=[]
+  maxhumid:any=[]
+
 
   constructor(
     private router: Router, private http: HttpClient,
@@ -50,6 +55,7 @@ export class StatisticsPage implements OnInit {
     this.temp=[]
     this.humids=[]
     this.time=[]
+    this.mintemp=[]
     const options: CalendarModalOptions = {
       pickMode: 'single',
       title: 'BASIC',
@@ -78,13 +84,13 @@ export class StatisticsPage implements OnInit {
     this.http.get(`http://139.59.249.192/statistic/${farmid}/${date}`).subscribe(
       res => {
         // this.data=res[0]
-        console.log(res)
+        console.log(res,'tttt')
         if (res instanceof Array) {
           res.map(element => {
             this.temp.push(element.temp)
             this.humids.push(element.humid)
             this.time.push(element.time)
-            console.log(element.temp)
+            console.log(element.temp,'asdf')
 
           });
         }
@@ -122,7 +128,7 @@ export class StatisticsPage implements OnInit {
     this.http.get(`http://139.59.249.192/read/farm/${this.farmid}`).subscribe(
       res => {
         this.data = res[0]
-        console.log(res)
+        console.log(res ,"555555")
       }
     )
   }
@@ -144,8 +150,8 @@ export class StatisticsPage implements OnInit {
         labels: this.time,
         datasets: [
           {
-            label: 'Tempreature',
-            fill: true,
+            label: 'อุณหภูมิ',
+            fill: false,
             // lineTension: 0.1,
             backgroundColor: 'rgba(255,0,0,0.4)',
             borderColor: 'rgba(255,0,0,0.4)',
@@ -163,11 +169,11 @@ export class StatisticsPage implements OnInit {
             pointRadius: 1,
             pointHitRadius: 10,
             data: this.temp,
-            spanGaps: false,
+            spanGaps: true,
           },
           {
-            label: 'Humidity',
-            fill: true,
+            label: 'ความชื้น',
+            fill: false,
             // lineTension: 0.1,
             backgroundColor: 'rgba(75,192,192,0.4)',
             borderColor: 'rgba(75,192,192,1)',

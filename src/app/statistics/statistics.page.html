@@ -13,23 +13,66 @@
       <ion-label>{{data.farm_name}}</ion-label>
     </ion-item>
 
-
+    <ion-grid style="display: flex; justify-content: center; align-items:  center;">
+      <ion-label>
+        เลือกวัน
+      </ion-label>
+    </ion-grid>
     <ion-grid style="display: flex; justify-content: center; align-items:  center;">
 
-      <!-- <ion-button (click)="openCalendar()">aaa</ion-button> -->
       <ion-icon (click)="openCalendar()" style="zoom:2.8;" name="arrow-back-outline" id="open-modal"
         name="calendar-outline"></ion-icon>
 
     </ion-grid>
 
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label>
+              อุณหภูมิต่ำสุด 
+            </ion-label>
+          </ion-item>
+        </ion-col>
+
+        <ion-col>
+          <ion-item>
+            <ion-label>
+              อุณหภูมิสูงสุด
+            </ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label>
+              ความชื้นต่ำสุด
+            </ion-label>
+          </ion-item>
+        </ion-col>
+
+        <ion-col>
+          <ion-item>
+            <ion-label>
+              ความชื้นสูงสุด
+            </ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
     <ion-card-header>
       สถิติ
     </ion-card-header>
-    <ion-card-content >
+    <ion-card-content>
       <canvas #lineCanvas style=" height: 360px;"></canvas>
 
     </ion-card-content>
-   
+
   </ion-card>
 
 </ion-content>

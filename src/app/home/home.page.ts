@@ -36,7 +36,7 @@ export class HomePage {
     this.timer = setInterval(() => {
       this.fetchData();
 
-    }, 5000);
+    }, 4000);
 
     console.log(this.data)
   }
