@@ -1,23 +1,22 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="success">
-
     <ion-title>
       <ion-icon style="zoom:1.8;" (click)="backhome()" name="arrow-back-outline"></ion-icon>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
-  <ion-card>
+<ion-content>
+  <ion-card style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;padding: 0px 15px 5px 15px;margin-bottom: 20px;">
 
     <ion-item>
-      <ion-col>
+      <ion-col style="display: flex; justify-content: center; align-items:  center;">
         <ion-label disabled="{{var1}}">คุมด้วยตัวเอง</ion-label>
       </ion-col>
       <ion-col style="display: flex; justify-content: center; align-items:  center;">
         <ion-toggle color="success" [(ngModel)]="var1" (ionChange)="change($event)"></ion-toggle>
       </ion-col>
-      <ion-col>
+      <ion-col style="display: flex; justify-content: center; align-items:  center;">
         <ion-label>อัตโนมัติ</ion-label>
       </ion-col>
     </ion-item>
@@ -30,35 +29,33 @@
         </ion-item>
       </ion-col>
     </ion-grid>
+  </ion-card>
+  <ion-card style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;padding: 0px 15px 5px 15px;margin-bottom: 20px;">
+    <ion-grid style="display: flex; justify-content: center; align-items:  center;">
+      <ion-item>
+        <ion-icon style="zoom:1.8;" name="thermometer-outline"></ion-icon>
+        <ion-label>อุณหภูมิล่าสุด {{data.temp}}</ion-label>
+      </ion-item>
+    </ion-grid>
 
-    <ion-card>
-      <ion-grid style="display: flex; justify-content: center; align-items:  center;">
-        <ion-item>
-          <ion-icon style="zoom:1.8;" name="thermometer-outline"></ion-icon>
-          <ion-label>อุณหภูมิล่าสุด {{data.temp}}</ion-label>
-        </ion-item>
-      </ion-grid>
+    <ion-grid style="display: flex; justify-content: center; align-items:  center;">
+      <ion-item disabled="{{!var1}}">
+        <ion-label>
+          อุณหภูมิที่ต้องการ
+          <IonLabel>{{data.fix_temp}}</IonLabel>
+        </ion-label>
+      </ion-item>
+    </ion-grid>
 
-      <ion-grid style="display: flex; justify-content: center; align-items:  center;">
-        <ion-item disabled="{{!var1}}">
-          <ion-label>
-            อุณหภูมิที่ต้องการ
-            <IonLabel>{{data.fix_temp}}</IonLabel>
-          </ion-label>
-        </ion-item>
-      </ion-grid>
-
-      <ion-grid style="display: flex; justify-content: center; align-items:  center;">
-        <ion-item disabled="{{!var1}}">
-          <h1>
-            <ion-icon style="zoom:1.8;" (click)="minustemp()" name="remove-circle"></ion-icon>
-            <ion-icon style="zoom:1.8;" (click)="plustemp()" name="add-circle"></ion-icon>
-          </h1>
-        </ion-item>
-      </ion-grid>
-    </ion-card>
-
-
+    <ion-grid style="display: flex; justify-content: center; align-items:  center;">
+      <ion-item disabled="{{!var1}}">
+        <h1>
+          <ion-icon style="zoom:1.8;" (click)="minustemp()" name="remove-circle"></ion-icon>
+          <ion-icon style="zoom:1.8;" (click)="plustemp()" name="add-circle"></ion-icon>
+        </h1>
+      </ion-item>
+    </ion-grid>
+   
     <ion-grid>
       <ion-col>
         <div>
@@ -70,38 +67,36 @@
         </div>
       </ion-col>
     </ion-grid>
+  </ion-card>
 
-    <ion-card>
+  <ion-card style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;padding: 0px 15px 5px 15px;margin-bottom: 20px;">
 
-      <ion-grid style="display: flex; justify-content: center; align-items:  center;">
-        <div>
-          <ion-item>
-            <ion-icon style="zoom:1.8;" name="water-outline"></ion-icon>
-            <ion-label>ความชื้นล่าสุด {{data.humid}}</ion-label>
-          </ion-item>
-        </div>
-      </ion-grid>
-
-      <ion-grid style="display: flex; justify-content: center; align-items:  center;">
-        <ion-item disabled="{{!var1}}">
-          <ion-label>
-            ความชื้นที่ต้องการ
-            <IonLabel>{{data.fix_humid}}</IonLabel>
-          </ion-label>
+    <ion-grid style="display: flex; justify-content: center; align-items:  center;">
+      <div>
+        <ion-item>
+          <ion-icon style="zoom:1.8;" name="water-outline"></ion-icon>
+          <ion-label>ความชื้นล่าสุด {{data.humid}}</ion-label>
         </ion-item>
-      </ion-grid>
+      </div>
+    </ion-grid>
 
+    <ion-grid style="display: flex; justify-content: center; align-items:  center;">
+      <ion-item disabled="{{!var1}}">
+        <ion-label>
+          ความชื้นที่ต้องการ
+          <IonLabel>{{data.fix_humid}}</IonLabel>
+        </ion-label>
+      </ion-item>
+    </ion-grid>
 
-      <ion-grid style="display: flex; justify-content: center; align-items:  center;">
-        <ion-item disabled="{{!var1}}">
-          <h1>
-            <ion-icon style="zoom:1.8;" (click)="minushumid()" name="remove-circle"></ion-icon>
-            <ion-icon style="zoom:1.8;" (click)="plushumid()" name="add-circle"></ion-icon>
-          </h1>
-        </ion-item>
-      </ion-grid>
-
-    </ion-card>
+    <ion-grid style="display: flex; justify-content: center; align-items:  center;">
+      <ion-item disabled="{{!var1}}">
+        <h1>
+          <ion-icon style="zoom:1.8;" (click)="minushumid()" name="remove-circle"></ion-icon>
+          <ion-icon style="zoom:1.8;" (click)="plushumid()" name="add-circle"></ion-icon>
+        </h1>
+      </ion-item>
+    </ion-grid>
 
     <ion-grid>
       <ion-col>
@@ -115,15 +110,5 @@
       </ion-col>
     </ion-grid>
 
-    <!-- <ion-grid style="display: flex; justify-content: center; align-items:  center;">
-        <ion-icon (click)="gostatistics()" style="zoom:3.5;" name="document-text-outline"></ion-icon>
-    </ion-grid>
-    <ion-grid style="display: flex; justify-content: center; align-items:  center;">
-      <ion-label>
-        ข้อมูลสถิติ
-      </ion-label>
-    </ion-grid> -->
-
   </ion-card>
-
 </ion-content>

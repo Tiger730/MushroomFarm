@@ -1,33 +1,33 @@
 <ion-header>
   <ion-toolbar color="success">
-    <ion-title>Login</ion-title>
+    <ion-title>เข้าสู่ระบบ</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;padding: 0px 15px 5px 15px;margin-bottom: 20px;">
 
-  <ion-card>
-    <ion-item>
-
+    <ion-grid>
       <ion-label> {{isError ? 'ไม่มีบัญชีผู้ใช้' : ''}}</ion-label>
-    </ion-item>
+    </ion-grid>
 
-    <ion-item>
-      <ion-label position="floating">User</ion-label>
-      <ion-input [(ngModel)]="username" required></ion-input>
-    </ion-item>
+    <ion-card style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+      <ion-item>
+        <ion-label position="floating">User</ion-label>
+        <ion-input [(ngModel)]="username" required></ion-input>
+      </ion-item>
+    </ion-card>
 
-    <ion-item>
-      <ion-label position="floating">Password</ion-label>
-      <ion-input [(ngModel)]="password" type="password" required></ion-input>
-    </ion-item>
+    <ion-card style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input [(ngModel)]="password" type="password" required></ion-input>
+      </ion-item>
+    </ion-card>
 
-    <ion-button (click)="login()" color="medium" class="ion-margin-top" type="submit" expand="block">
-      Sign in
+    <ion-button (click)="login()" color="success" class="ion-margin-top" type="submit" expand="block">
+      ยืนยัน
     </ion-button>
 
   </ion-card>
-
-
-
 </ion-content>

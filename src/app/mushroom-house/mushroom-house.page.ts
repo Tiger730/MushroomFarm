@@ -11,11 +11,13 @@ import { HttpClient } from '@angular/common/http';
 export class MushroomHousePage implements OnInit {
   data : any = []
   timer : any
+  
   constructor(private router: Router,private http:HttpClient,private activatedRoute: ActivatedRoute) { }
   var1;
   var2;
   var3;
   farmid;
+
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(paramMap => {
       if (!paramMap.has('farm_id')) {

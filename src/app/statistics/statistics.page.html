@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
+  <ion-card style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;padding: 0px 15px 5px 15px;margin-bottom: 20px;">
     <ion-item>
       <ion-icon style="zoom:1.5;" name="home-outline" slot="start"></ion-icon>
       <ion-label>{{data.farm_name}}</ion-label>
@@ -30,7 +30,7 @@
         <ion-col>
           <ion-item>
             <ion-label>
-              อุณหภูมิต่ำสุด 
+              อุณหภูมิต่ำสุด {{mintemp}}
             </ion-label>
           </ion-item>
         </ion-col>
@@ -38,7 +38,7 @@
         <ion-col>
           <ion-item>
             <ion-label>
-              อุณหภูมิสูงสุด
+              อุณหภูมิสูงสุด {{maxtemp}}
             </ion-label>
           </ion-item>
         </ion-col>
@@ -50,7 +50,7 @@
         <ion-col>
           <ion-item>
             <ion-label>
-              ความชื้นต่ำสุด
+              ความชื้นต่ำสุด {{minhumid}}
             </ion-label>
           </ion-item>
         </ion-col>
@@ -58,7 +58,7 @@
         <ion-col>
           <ion-item>
             <ion-label>
-              ความชื้นสูงสุด
+              ความชื้นสูงสุด {{maxhumid}}
             </ion-label>
           </ion-item>
         </ion-col>
@@ -66,7 +66,7 @@
     </ion-grid>
 
     <ion-card-header>
-      สถิติ
+      สถิติ {{lineCanvas.data}}
     </ion-card-header>
     <ion-card-content>
       <canvas #lineCanvas style=" height: 360px;"></canvas>

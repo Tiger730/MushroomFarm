@@ -31,11 +31,11 @@ export class StatisticsPage implements OnInit {
   // statisticdata: any = []
   temp: any = []
   humids: any = []
-  time:any = []
-  mintemp:any=[]
-  maxtemp:any=[]
-  minhumid:any=[]
-  maxhumid:any=[]
+  time: any = []
+  mintemp: any
+  maxtemp: any
+  minhumid: any
+  maxhumid: any
 
 
   constructor(
@@ -52,10 +52,10 @@ export class StatisticsPage implements OnInit {
   }
 
   async openCalendar() {
-    this.temp=[]
-    this.humids=[]
-    this.time=[]
-    this.mintemp=[]
+    this.temp = []
+    this.humids = []
+    this.time = []
+
     const options: CalendarModalOptions = {
       pickMode: 'single',
       title: 'BASIC',
@@ -84,19 +84,33 @@ export class StatisticsPage implements OnInit {
     this.http.get(`http://139.59.249.192/statistic/${farmid}/${date}`).subscribe(
       res => {
         // this.data=res[0]
-        console.log(res,'tttt')
+        console.log(res, 'tttt')
         if (res instanceof Array) {
           res.map(element => {
             this.temp.push(element.temp)
             this.humids.push(element.humid)
             this.time.push(element.time)
-            console.log(element.temp,'asdf')
+            console.log(element.temp, 'asdf')
 
           });
         }
         console.log(this.temp, "temp")
         console.log(this.humids, "humid")
         this.lineChartMethod()
+        if (this.temp.length != 0 && this.humids.length !== 0) {
+          this.mintemp = Math.min.apply(Math, this.temp)
+          this.maxtemp = Math.max.apply(Math, this.temp)
+          this.minhumid = Math.min.apply(Math, this.humids)
+          this.maxhumid = Math.max.apply(Math, this.humids)
+        }
+        else {
+          this.mintemp = 0
+          this.maxtemp = 0
+          this.minhumid = 0
+          this.maxhumid = 0
+        }
+
+
       }
     )
   }
@@ -112,9 +126,9 @@ export class StatisticsPage implements OnInit {
       console.log(this.farmid)
       this.fetchData();
       let date = new Date()
-      let daynow = date.getFullYear()+"-"+(date.getUTCMonth()+1)+"-"+date.getUTCDate()
+      let daynow = date.getFullYear() + "-" + (date.getUTCMonth() + 1) + "-" + date.getUTCDate()
 
-      this.chart(this.farmid,daynow)
+      this.chart(this.farmid, daynow)
     });
   }
 
@@ -128,20 +142,13 @@ export class StatisticsPage implements OnInit {
     this.http.get(`http://139.59.249.192/read/farm/${this.farmid}`).subscribe(
       res => {
         this.data = res[0]
-        console.log(res ,"555555")
+        console.log(res, "555555")
       }
     )
   }
 
-
-  // ngAfterViewInit() {
-  //   this.lineChartMethod();
-  // }
-
-
-
   lineChartMethod() {
-    if (this.lineChart){
+    if (this.lineChart) {
       this.lineChart.destroy()
     }
     this.lineChart = new Chart(this.lineCanvas.nativeElement, {
@@ -198,11 +205,11 @@ export class StatisticsPage implements OnInit {
       },
       options: {
         scales: {
-            y: {
-                beginAtZero: true
-            }
+          y: {
+            beginAtZero: true
+          }
         }
-    }
+      }
     });
   }
 

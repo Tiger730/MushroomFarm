@@ -29,7 +29,9 @@ export class LoginPage implements OnInit {
       if (response[0].status === 200) {
         this.isError = false
         await this.storage.set('userData', JSON.stringify(response[0]));
-        this.router.navigate(['home'])
+        setTimeout(()=>{
+          this.router.navigate(['home'])
+        }, 500);
 
       } else {
         this.isError = true
