@@ -83,7 +83,6 @@ export class StatisticsPage implements OnInit {
   chart(farmid, date) {
     this.http.get(`http://139.59.249.192/statistic/${farmid}/${date}`).subscribe(
       res => {
-        // this.data=res[0]
         console.log(res, 'tttt')
         if (res instanceof Array) {
           res.map(element => {

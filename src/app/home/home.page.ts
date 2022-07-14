@@ -22,7 +22,7 @@ export class HomePage {
 
   }
   // ฟังก์ชั่นเปลี่ยนหน้าไป MushroomHousePage
-  gomushroomhouse(farm_id) { 
+  gomushroomgohouse(farm_id) { 
     this.navCtrl.navigateForward("/mushroom-house/" + farm_id)
     console.log(farm_id)
   }
@@ -63,14 +63,12 @@ export class HomePage {
   async getUserData() {
     const data = await this.storage.get('userData');
     const pareData = JSON.parse(data)
-    console.log('11111',pareData)
     if (data != null) {
-      console.log('gett', this.userID)
       this.userID = pareData.user_id
       this.username = pareData.username
     }
     if (data == null) {
-      console.log('gett', this.username)
+      console.log('get', this.username)
       this.navCtrl.navigateForward("/login")
     }
   }

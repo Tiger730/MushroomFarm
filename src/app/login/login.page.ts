@@ -22,9 +22,6 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    console.log("username : ", this.username)
-    console.log("password : ", this.password)
-
     this.http.get(`http://139.59.249.192/login/${this.username}/${this.password}`).subscribe(async response => {
       if (response[0].status === 200) {
         this.isError = false
